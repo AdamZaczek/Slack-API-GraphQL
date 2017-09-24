@@ -1,11 +1,11 @@
-/* eslint no-underscore-dangle: off*/
+/* eslint no-underscore-dangle: off */
 /* eslint "arrow-body-style": off */
 
 import {
   GraphQLObjectType,
   GraphQLSchema,
-  GraphQLString,
-} from 'graphql';
+  GraphQLString
+} from 'graphql'
 
 const Query = new GraphQLObjectType({
   name: 'ProfileSchema',
@@ -15,14 +15,14 @@ const Query = new GraphQLObjectType({
       type: GraphQLString,
       description: 'Our first query field!',
       resolve: () => {
-        return 'Hello from GraphiQL';
+        return 'Hello from GraphiQL'
       }
     }
   })
-});
+})
 
 const Schema = new GraphQLSchema({
   query: Query
-});
+})
 
-export default Schema;
+export default Schema

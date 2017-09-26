@@ -4,10 +4,10 @@ import fs from 'fs'
 import { graphql } from 'graphql'
 import chalk from 'chalk'
 import { introspectionQuery, printSchema } from 'graphql/utilities'
-import schema from '../appData/schema'
+import schema from '../schema/schema'
 
-const jsonFile = path.join(__dirname, '../appData/schema.json')
-const graphQLFile = path.join(__dirname, '../appData/schema.graphql')
+const jsonFile = path.join(__dirname, '../schema/schema.json')
+const graphQLFile = path.join(__dirname, '../schema/schema.graphql')
 
 async function updateSchema () {
   try {

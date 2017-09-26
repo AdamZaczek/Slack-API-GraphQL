@@ -5,3 +5,4 @@ server/appData/schema.graphql
 server/appData/schema.json
 bin/
 build/
+.DS_Store

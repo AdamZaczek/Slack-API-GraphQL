@@ -1,0 +1,36 @@
+schema {
+  query: SlackAPI
+}
+
+# This method returns a list of all private conversation channels that the user has
+type Im {
+  id: String
+  conversation: [Message]
+  user: User
+  created: String
+  isDeleted: Boolean
+}
+
+# Private message exchanged with a Slack channel member
+type Message {
+  type: String
+  ts: String
+  text: String
+  user: User
+}
+
+# Root of the Profile
+type SlackAPI {
+  # Returns list of private messages
+  ims: [Im]
+}
+
+# Represents user we talk with
+type User {
+  id: String
+  name: String
+  deleted: String
+  real_name: String
+  image_192: String
+  email: String
+}

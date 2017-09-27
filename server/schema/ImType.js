@@ -4,7 +4,6 @@ import {
   GraphQLList,
   GraphQLBoolean
 } from 'graphql'
-
 import fetch from 'node-fetch'
 
 import Message from './MessageType'

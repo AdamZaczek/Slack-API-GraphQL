@@ -1,14 +1,11 @@
-/* eslint "arrow-body-style": off */
-
 import {
   GraphQLObjectType,
   GraphQLSchema,
   GraphQLList
 } from 'graphql'
+import fetch from 'node-fetch'
 
 import Im from './ImType'
-
-import fetch from 'node-fetch'
 
 const Query = new GraphQLObjectType({
   name: 'SlackAPI',

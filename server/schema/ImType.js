@@ -32,9 +32,8 @@ export default new GraphQLObjectType({
       }
     },
     created: { type: GraphQLString },
-    isDeleted: {
-      type: GraphQLBoolean,
-      resolve: root => root.is_user_deleted
-    }
+    is_user_deleted: { type: GraphQLBoolean },
+    is_im: { type: GraphQLBoolean }
+
   })
 })

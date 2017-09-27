@@ -1,6 +1,8 @@
 import {
   GraphQLObjectType,
-  GraphQLString
+  GraphQLString,
+  GraphQLFloat,
+  GraphQLBoolean
 } from 'graphql'
 
 export default new GraphQLObjectType({
@@ -8,19 +10,77 @@ export default new GraphQLObjectType({
   description: 'Represents user we talk with',
   fields: () => ({
     id: { type: GraphQLString },
+    team_id: { type: GraphQLString },
     name: { type: GraphQLString },
     deleted: { type: GraphQLString },
-    real_name: {
+    real_name: { type: GraphQLString },
+    tz: { type: GraphQLString },
+    tz_label: { type: GraphQLString },
+    tz_offset: { type: GraphQLFloat },
+    avatar_hash: {
       type: GraphQLString,
-      resolve: root => root.profile.real_name
+      resolve: root => root.profile.avatar_hash
+    },
+    status_text: {
+      type: GraphQLString,
+      resolve: root => root.profile.status_text
+    },
+    status_emoji: {
+      type: GraphQLString,
+      resolve: root => root.profile.status_emoji
+    },
+    display_name: {
+      type: GraphQLString,
+      resolve: root => root.profile.display_name
+    },
+    real_name_normalized: {
+      type: GraphQLString,
+      resolve: root => root.profile.real_name_normalized
+    },
+    display_name_normalized: {
+      type: GraphQLString,
+      resolve: root => root.profile.display_name_normalized
+    },
+    email: {
+      type: GraphQLString,
+      resolve: root => root.profile.email
+    },
+    image_24: {
+      type: GraphQLString,
+      resolve: root => root.profile.image_24
+    },
+    image_32: {
+      type: GraphQLString,
+      resolve: root => root.profile.image_32
+    },
+    image_48: {
+      type: GraphQLString,
+      resolve: root => root.profile.image_48
+    },
+    image_72: {
+      type: GraphQLString,
+      resolve: root => root.profile.image_72
     },
     image_192: {
       type: GraphQLString,
       resolve: root => root.profile.image_192
     },
-    email: {
+    image_512: {
       type: GraphQLString,
-      resolve: root => root.profile.email
-    }
+      resolve: root => root.profile.image_512
+    },
+    team: {
+      type: GraphQLString,
+      resolve: root => root.profile.team
+    },
+    is_admin: { type: GraphQLBoolean },
+    is_owner: { type: GraphQLBoolean },
+    is_primary_owner: { type: GraphQLBoolean },
+    is_restricted: { type: GraphQLBoolean },
+    is_ultra_restricted: { type: GraphQLBoolean },
+    is_bot: { type: GraphQLBoolean },
+    updated: { type: GraphQLFloat },
+    is_app_user: { type: GraphQLBoolean },
+    has_2fa: { type: GraphQLBoolean }
   })
 })

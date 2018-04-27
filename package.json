@@ -12,10 +12,6 @@
   "repository": {
     "type": "git"
   },
-  "engines": {
-    "node": "6.11.3",
-    "npm": "5.3.0"
-  },
   "keywords": [
     "graphql",
     "express",

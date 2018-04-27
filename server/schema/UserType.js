@@ -4,6 +4,13 @@ import {
   GraphQLFloat,
   GraphQLBoolean
 } from 'graphql'
+import fetch from 'node-fetch'
+
+export const fetchUser = (id, slackToken) => {
+  return fetch(`https://slack.com/api/users.info?token=${slackToken}&user=${id}&pretty=1`)
+    .then(res => res.json())
+    .then(res => res.user)
+}
 
 export default new GraphQLObjectType({
   name: 'User',

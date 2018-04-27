@@ -1,7 +1,7 @@
 import { GraphQLObjectType, GraphQLString, GraphQLList, GraphQLBoolean } from 'graphql'
 import fetch from 'node-fetch'
 
-import User from './UserType'
+import User, { fetchUser } from './UserType'
 
 export default new GraphQLObjectType({
   name: 'Channel',
@@ -15,9 +15,7 @@ export default new GraphQLObjectType({
     creator: {
       type: User,
       resolve: (root, args, { slackToken }) => {
-        return fetch(`https://slack.com/api/users.info?token=${slackToken}&user=${root.creator}&pretty=1`)
-          .then(res => res.json())
-          .then(res => res.user)
+        return fetchUser(root.creator, slackToken)
       }
     },
     is_archived: { type: GraphQLBoolean },
@@ -29,12 +27,10 @@ export default new GraphQLObjectType({
     is_mpim: { type: GraphQLBoolean },
 
     members: {
-      type: new GraphQLList(User)
-      // resolve: (root, args, { slackToken }) => {
-      //  return fetch(`https://slack.com/api/users.info?token=${slackToken}&user=${root.user}&pretty=1`)
-      //    .then(res => res.json())
-      //    .then(res => res.user)
-      // }
+      type: new GraphQLList(User),
+      resolve: (root, args, { slackToken }) => {
+        return root.members.map(id => fetchUser(id, slackToken))
+      }
     }
   })
 })

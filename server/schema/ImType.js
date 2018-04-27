@@ -20,7 +20,7 @@ export default new GraphQLObjectType({
     user: {
       type: User,
       resolve: (root, args, { slackToken }) => {
-        return fetchUser(root.id)
+        return fetchUser(root.id, slackToken)
       }
     },
     created: { type: GraphQLString },

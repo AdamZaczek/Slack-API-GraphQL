@@ -55,7 +55,6 @@ type User {
   id: String
   team_id: String
   name: String
-  deleted: String
   real_name: String
   tz: String
   tz_label: String
@@ -81,6 +80,7 @@ type User {
   is_restricted: Boolean
   is_ultra_restricted: Boolean
   is_bot: Boolean
+  deleted: Boolean
   updated: Float
   is_app_user: Boolean
   has_2fa: Boolean

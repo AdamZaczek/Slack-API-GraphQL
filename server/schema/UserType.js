@@ -14,7 +14,6 @@ export default new GraphQLObjectType({
     id: { type: GraphQLString },
     team_id: { type: GraphQLString },
     name: { type: GraphQLString },
-    deleted: { type: GraphQLString },
     real_name: { type: GraphQLString },
     tz: { type: GraphQLString },
     tz_label: { type: GraphQLString },
@@ -85,6 +84,7 @@ export default new GraphQLObjectType({
     is_restricted: { type: GraphQLBoolean },
     is_ultra_restricted: { type: GraphQLBoolean },
     is_bot: { type: GraphQLBoolean },
+    deleted: { type: GraphQLBoolean },
     updated: { type: GraphQLFloat },
     is_app_user: { type: GraphQLBoolean },
     has_2fa: { type: GraphQLBoolean }

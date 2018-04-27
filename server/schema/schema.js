@@ -1,8 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLList
-} from 'graphql'
+import { GraphQLObjectType, GraphQLSchema, GraphQLList, GraphQLString } from 'graphql'
 import fetch from 'node-fetch'
 
 import Im from './ImType'
@@ -28,6 +24,19 @@ const Query = new GraphQLObjectType({
         return fetch(`https://slack.com/api/channels.list?token=${slackToken}&pretty=1`)
           .then(res => res.json())
           .then(res => res.channels)
+      }
+    },
+    channel: {
+      type: Channel,
+      args: {
+        id: { type: GraphQLString }
+      },
+      description: 'Returns a single channel',
+      resolve: (root, args, { slackToken }) => {
+        console.log(`https://slack.com/api/channels.info?token=${slackToken}&channel=${args.id}&pretty=1`)
+        return fetch(`https://slack.com/api/channels.info?token=${slackToken}&channel=${args.id}&pretty=1`)
+          .then(res => res.json())
+          .then(res => res.channel)
       }
     }
   })

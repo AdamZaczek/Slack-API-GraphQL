@@ -45,6 +45,9 @@ type SlackAPI {
 
   # Returns list of channels
   allChannels: [Channel]
+
+  # Returns a single channel
+  channel(id: String): Channel
 }
 
 # Represents user we talk with

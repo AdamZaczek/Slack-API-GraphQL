@@ -64,6 +64,7 @@ type User {
   status_text: String
   status_emoji: String
   display_name: String
+  title: String
   real_name_normalized: String
   display_name_normalized: String
   email: String

@@ -35,6 +35,10 @@ export default new GraphQLObjectType({
       type: GraphQLString,
       resolve: root => root.profile.display_name
     },
+    title: {
+      type: GraphQLString,
+      resolve: root => root.profile.title
+    },
     real_name_normalized: {
       type: GraphQLString,
       resolve: root => root.profile.real_name_normalized

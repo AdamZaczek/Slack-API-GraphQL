@@ -11,7 +11,7 @@ const Query = new GraphQLObjectType({
   name: 'SlackAPI',
   description: 'Root of the Profile',
   fields: () => ({
-    ims: {
+    allIms: {
       type: new GraphQLList(Im),
       description: 'Returns list of private messages',
       resolve: (root, args, { slackToken }) => {

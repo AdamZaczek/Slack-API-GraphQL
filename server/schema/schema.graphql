@@ -23,7 +23,7 @@ type Message {
 # Root of the Profile
 type SlackAPI {
   # Returns list of private messages
-  ims: [Im]
+  allIms: [Im]
 }
 
 # Represents user we talk with

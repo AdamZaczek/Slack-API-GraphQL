@@ -13,7 +13,7 @@
           "description": "Root of the Profile",
           "fields": [
             {
-              "name": "ims",
+              "name": "allIms",
               "description": "Returns list of private messages",
               "args": [],
               "type": {

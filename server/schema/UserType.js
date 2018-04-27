@@ -1,9 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLFloat,
-  GraphQLBoolean
-} from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLFloat, GraphQLBoolean } from 'graphql'
 import fetch from 'node-fetch'
 
 export const fetchUser = (id, slackToken) => {

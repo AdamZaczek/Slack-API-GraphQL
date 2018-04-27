@@ -1,9 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLList,
-  GraphQLBoolean
-} from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLList, GraphQLBoolean } from 'graphql'
 import fetch from 'node-fetch'
 
 import Message from './MessageType'
@@ -31,6 +26,5 @@ export default new GraphQLObjectType({
     created: { type: GraphQLString },
     is_user_deleted: { type: GraphQLBoolean },
     is_im: { type: GraphQLBoolean }
-
   })
 })

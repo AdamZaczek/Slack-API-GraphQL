@@ -1,5 +1,4 @@
 import { GraphQLObjectType, GraphQLString, GraphQLList, GraphQLBoolean } from 'graphql'
-import fetch from 'node-fetch'
 
 import User, { fetchUser } from './UserType'
 

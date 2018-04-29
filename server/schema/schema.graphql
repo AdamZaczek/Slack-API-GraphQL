@@ -2,6 +2,24 @@ schema {
   query: SlackAPI
 }
 
+# This method returns a list of all channels that the user has access
+type Channel {
+  id: String
+  name: String
+  name_normalized: String
+  is_channel: Boolean
+  created: String
+  creator: User
+  is_archived: Boolean
+  is_general: Boolean
+  is_shared: Boolean
+  is_org_shared: Boolean
+  is_member: Boolean
+  is_private: Boolean
+  is_mpim: Boolean
+  members: [User]
+}
+
 # This method returns a list of all private conversation channels that the user has
 type Im {
   id: String
@@ -23,7 +41,13 @@ type Message {
 # Root of the Profile
 type SlackAPI {
   # Returns list of private messages
-  ims: [Im]
+  allIms: [Im]
+
+  # Returns list of channels
+  allChannels: [Channel]
+
+  # Returns a single channel
+  channel(id: String): Channel
 }
 
 # Represents user we talk with
@@ -31,7 +55,6 @@ type User {
   id: String
   team_id: String
   name: String
-  deleted: String
   real_name: String
   tz: String
   tz_label: String
@@ -40,6 +63,7 @@ type User {
   status_text: String
   status_emoji: String
   display_name: String
+  title: String
   real_name_normalized: String
   display_name_normalized: String
   email: String
@@ -56,6 +80,7 @@ type User {
   is_restricted: Boolean
   is_ultra_restricted: Boolean
   is_bot: Boolean
+  deleted: Boolean
   updated: Float
   is_app_user: Boolean
   has_2fa: Boolean

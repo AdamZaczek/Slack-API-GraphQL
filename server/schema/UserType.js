@@ -1,9 +1,11 @@
-import {
-  GraphQLObjectType,
-  GraphQLString,
-  GraphQLFloat,
-  GraphQLBoolean
-} from 'graphql'
+import { GraphQLObjectType, GraphQLString, GraphQLFloat, GraphQLBoolean } from 'graphql'
+import fetch from 'node-fetch'
+
+export const fetchUser = (id, slackToken) => {
+  return fetch(`https://slack.com/api/users.info?token=${slackToken}&user=${id}&pretty=1`)
+    .then(res => res.json())
+    .then(res => res.user)
+}
 
 export default new GraphQLObjectType({
   name: 'User',
@@ -12,7 +14,6 @@ export default new GraphQLObjectType({
     id: { type: GraphQLString },
     team_id: { type: GraphQLString },
     name: { type: GraphQLString },
-    deleted: { type: GraphQLString },
     real_name: { type: GraphQLString },
     tz: { type: GraphQLString },
     tz_label: { type: GraphQLString },
@@ -32,6 +33,10 @@ export default new GraphQLObjectType({
     display_name: {
       type: GraphQLString,
       resolve: root => root.profile.display_name
+    },
+    title: {
+      type: GraphQLString,
+      resolve: root => root.profile.title
     },
     real_name_normalized: {
       type: GraphQLString,
@@ -79,6 +84,7 @@ export default new GraphQLObjectType({
     is_restricted: { type: GraphQLBoolean },
     is_ultra_restricted: { type: GraphQLBoolean },
     is_bot: { type: GraphQLBoolean },
+    deleted: { type: GraphQLBoolean },
     updated: { type: GraphQLFloat },
     is_app_user: { type: GraphQLBoolean },
     has_2fa: { type: GraphQLBoolean }

@@ -15,7 +15,9 @@ if (config.env === 'development') {
       slackToken: config.slackToken
     }
   }))
-  graphql.listen(config.graphql.port, () => console.log(chalk.green(`GraphQL is listening on port ${config.graphql.port}`)))
+  graphql.listen(config.graphql.port, 'localhost', () =>
+    console.log(chalk.green(`GraphQL is listening on port ${config.graphql.port}`))
+  )
   graphql.use(bodyParser.json({ type: '*/*' }))
 } else if (config.env === 'production') {
   const graphQLServer = express()
